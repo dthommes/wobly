@@ -1,0 +1,3 @@
+// Wobly - Wowd's byte-level serialization protocol
+// Copyright 2008-2011 Wowd Inc. All rights reserved.
+// http://code.google.com/p/wobly/

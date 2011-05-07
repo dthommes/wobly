@@ -1,0 +1,9 @@
+This file contains a list of people who have made large contributions
+to the public version of Wobly.
+
+Original Wobly design and implementation:
+  Igor Kabiljo (ikabiljo@gmail.com)
+  Relja Petrovic (relja.petrovic@gmail.com)
+  Marko Savic (marsavic@gmail.com)
+  Srecko Toroman (sreckotoroman@gmail.com)
+  
