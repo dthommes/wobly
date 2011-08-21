@@ -18,7 +18,8 @@
  *******************************************************************************/
 package com.wowd.wobly.examples.benchmark.simple;
 
-import com.wowd.common.WowdUtils;
+import java.util.Arrays;
+
 import com.wowd.wobly.examples.benchmark.simple.Image.Size;
 import com.wowd.wobly.examples.benchmark.simple.Media.Player;
 
@@ -36,7 +37,7 @@ public class BenchTest
 			    18000000,    // half hour in milliseconds
 			    58982400,        // bitrate * duration in seconds / 8 bits per byte
 			    262144,       // 256k
-			    WowdUtils.Wrapper.asList("Bill Gates", "Steve Jobs"),
+			    Arrays.asList("Bill Gates", "Steve Jobs"),
 		        Player.JAVA,
 		        null
 			);
@@ -56,7 +57,7 @@ public class BenchTest
 			    Size.SMALL
 			);
 		
-		MediaContent content = new MediaContent(WowdUtils.Wrapper.asList(image1, image2), media);
+		MediaContent content = new MediaContent(Arrays.asList(image1, image2), media);
 		System.out.println(content.getSize());
 	}
 }
