@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with Wobly. If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
-package com.wowd.wobly;
+package com.wowd.wobly.examples;
 
 import java.nio.ByteBuffer;
 import java.util.Random;
@@ -25,6 +25,9 @@ import junit.framework.Assert;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.wowd.wobly.WoblyUtils;
+import com.wowd.wobly.WoblyUtils.Buffers;
 
 
 public class StringSpeedTest

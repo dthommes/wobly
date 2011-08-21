@@ -24,7 +24,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,11 +33,10 @@ import com.wowd.wobly.Wobly;
 import com.wowd.wobly.annotations.ReadStatic;
 import com.wowd.wobly.exceptions.WoblyReadException;
 
-public class WowdUtils {	
-
+public class WowdUtils {
 
 	private static final ThreadLocal<Charset> defaultCharset = new ThreadLocal<Charset>(){
-		@Override 
+		@Override
 		protected Charset initialValue() {
 			return Charset.forName("UTF-8");
 		}
@@ -47,10 +45,8 @@ public class WowdUtils {
 	public static Charset DEFAULT_CHARSET() {
 		return defaultCharset.get();
 	}
-	
 
 
-	
 	public static class Common {
 
 		public static <T extends Comparable<T>> int compare(T o1, T o2) {
@@ -60,11 +56,11 @@ public class WowdUtils {
 		public static boolean equals(Object o1, Object o2) {
 			return o1 == null?(o2==null):o1.equals(o2);
 		}
-		
+
 		public static int hashCode(Object o) {
 			return o==null?0:o.hashCode();
 		}
-		
+
 		public static int hashCodePair(Object o1, Object o2) {
 			return hashCode(o1)+31*hashCode(o2);
 		}
@@ -72,10 +68,8 @@ public class WowdUtils {
 		public static int hashCodeTriple(Object o1, Object o2, Object o3) {
 			return hashCode(o1)+31*hashCode(o2)+127*hashCode(o3);
 		}
-		
+
 	}
-
-
 
 	public static class Reflection {
 		public static Field getFieldWithAnotation(Class<?> clazz, Class<? extends Annotation> annotation)
@@ -84,40 +78,40 @@ public class WowdUtils {
 
 			for (int i = 0; i < fields.length; i++)
 			{
-				if (fields[i].isAnnotationPresent(annotation))			
+				if (fields[i].isAnnotationPresent(annotation))
 					return fields[i];
 			}
 			return null;
 		}
-		
+
 		public static Method getMethodWithAnotation(Class<?> clazz, Class<? extends Annotation> annotation)
 		{
 			Method[] methods = clazz.getDeclaredMethods();
 
 			for (int i = 0; i < methods.length; i++)
 			{
-				if (methods[i].isAnnotationPresent(annotation))			
+				if (methods[i].isAnnotationPresent(annotation))
 					return methods[i];
 			}
 			return null;
 		}
-		
+
 		public static Method getMethodWithName(Class<?> clazz, String name)
 		{
 			Method[] methods = clazz.getDeclaredMethods();
 
 			for (int i = 0; i < methods.length; i++)
 			{
-				if (methods[i].getName().equals(name))			
+				if (methods[i].getName().equals(name))
 					return methods[i];
 			}
-			
+
 			clazz = clazz.getSuperclass();
 			if (clazz != null)
 				return getMethodWithName(clazz, name);
 			return null;
 		}
-		
+
 		public static <T> T invokeMethodSafe(Method method, Object... params)
 		{
 			if (method == null) return null;
@@ -142,7 +136,7 @@ public class WowdUtils {
 				return null;
 			}
 		}
-		
+
 		@SuppressWarnings("unchecked")
 		public static <T extends Wobly> T readObject(Class<T> clazz, ByteBuffer buf) {
 			Method method = WowdUtils.Reflection.getMethodWithAnotation(clazz, ReadStatic.class);
@@ -154,13 +148,6 @@ public class WowdUtils {
 	}
 
 	public static class Wrapper {
-		public static <T> ArrayList<T> asList(T... a) {
-    	ArrayList<T> res = new ArrayList<T>(a.length);
-    	for(int i = 0;i<a.length;i++)	    		
-    		res.add(a[i]);
-    	return res;
-    }
-    
 		public static <P, Q> Map<P, Q> asMap(Pair<? extends P, ? extends Q>... a)
 		{
 			HashMap<P, Q> res = new HashMap<P, Q>(2 * a.length);
@@ -168,32 +155,33 @@ public class WowdUtils {
 				res.put(a[i].first(), a[i].second());
 			return res;
 		}
-    public static <T> String collectionToString(Collection<T> collection, String between) {
-    	StringBuilder sb = new StringBuilder();
-    	boolean first = true;
-    	for(T t : collection) {
-    		if (first) 
-    			first = false;	    		
-    		else sb.append(between);
-    		sb.append(t);
-    	}	    	
-    	return sb.toString();
-    }
 
-    public static int size(Wobly object) {
-    	if (object == null)
-    		return 0;
-    	else return object.getSize();
-    }
+		public static <T> String collectionToString(Collection<T> collection, String between) {
+			StringBuilder sb = new StringBuilder();
+			boolean first = true;
+			for(T t : collection) {
+				if (first)
+					first = false;
+				else sb.append(between);
+				sb.append(t);
+			}
+			return sb.toString();
+		}
+
+		public static int size(Wobly object) {
+			if (object == null)
+				return 0;
+			else return object.getSize();
+		}
 
 		public static int sizeCollection(Collection<? extends Wobly> collection) {
-			if (collection == null || collection.size()==0) 
+			if (collection == null || collection.size()==0)
 				return 0;
 			int size = 0;
 			size += 1;
 			size += 4;
 			size += 4;
-			for (Wobly v : collection) 
+			for (Wobly v : collection)
 				size += v.getSize();
 			return size;
 		}

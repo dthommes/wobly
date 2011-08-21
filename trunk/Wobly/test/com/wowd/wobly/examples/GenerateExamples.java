@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with Wobly. If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
-package com.wowd.wobly;
+package com.wowd.wobly.examples;
+
+import com.wowd.wobly.WoblyGenerator;
 
 
 public class GenerateExamples

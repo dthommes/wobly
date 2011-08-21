@@ -9,5 +9,6 @@
         <javaElement handleIdentifier="=Wobly/common"/>
         <javaElement handleIdentifier="=Wobly/generation"/>
         <folder path="/Wobly/META-INF"/>
+        <javaElement handleIdentifier="=Wobly/extended"/>
     </selectedElements>
 </jardesc>

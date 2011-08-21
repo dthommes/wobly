@@ -20,6 +20,7 @@ package com.wowd.wobly.generation.types.impl.trove;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ import com.wowd.wobly.generation.WoblyGeneratorUtils;
 
 public class TroveGeneratorUtils
 {
-	private static final List<String> allowedStrings = WowdUtils.Wrapper.asList("Byte", "Short", "Int", "Long", "Float", "Double", "Object");
+	private static final List<String> allowedStrings = Arrays.asList("Byte", "Short", "Int", "Long", "Float", "Double", "Object");
 	
 	
 	private static final Map<String, Class<?>> primiteveMappings = 
